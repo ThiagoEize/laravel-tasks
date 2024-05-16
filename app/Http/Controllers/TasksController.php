@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\TasksRepository;
 use App\Models\Task;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class TasksController extends Controller
@@ -15,9 +16,13 @@ class TasksController extends Controller
         $this->tasksRepository = $tasksRepository;
     }
 
-    public function list()
+    public function list(): JsonResponse
     {
-        $tasks = $this->tasksRepository->list();
+        try {
+            $tasks = $this->tasksRepository->list();
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Unable to read the task list'], 500);
+        }
 
         return response()->json(
             $tasks,
@@ -25,7 +30,7 @@ class TasksController extends Controller
         );
     }
 
-    public function create(Request $request)
+    public function create(Request $request): JsonResponse
     {
         $task = $this->tasksRepository->create($request);
 
@@ -38,7 +43,7 @@ class TasksController extends Controller
         );
     }
 
-    public function update(Request $request)
+    public function update(Request $request): JsonResponse
     {
         $task = $this->tasksRepository->update($request);
 
@@ -55,7 +60,7 @@ class TasksController extends Controller
         );
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request): JsonResponse
     {
         $id = $request->get('id');
 

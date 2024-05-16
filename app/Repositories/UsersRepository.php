@@ -3,18 +3,19 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
 
 final class UsersRepository
 {
-    public function list()
+    public function list(): Collection
     {
         return User::all();
     }
 
-    public function generateToken(int $id)
+    public function generateToken(int $id): array
     {
-        $user = \App\Models\User::find($id);
-        $token = $user->createToken('user-auth-token');
+        $user = User::find($id);
+        $token = $user->createToken('auth-user-id' . $id);
 
         return ['token' => $token->plainTextToken];
     }

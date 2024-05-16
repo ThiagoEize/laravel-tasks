@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\UsersRepository;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
@@ -14,7 +15,7 @@ class UserController extends Controller
         $this->userRepository = $userRepository;
     }
 
-    public function list()
+    public function list(): JsonResponse
     {
         $users = $this->userRepository->list();
 
@@ -24,7 +25,7 @@ class UserController extends Controller
         );
     }
 
-    public function generateToken(Request $request)
+    public function generateToken(Request $request): JsonResponse
     {
         $id = $request->get('id');
         $token = $this->userRepository->generateToken($id);

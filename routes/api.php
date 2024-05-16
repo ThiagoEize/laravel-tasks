@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/users', 'App\Http\Controllers\UserController@list');
 Route::post('/user/token', 'App\Http\Controllers\UserController@generateToken');
 
-
-Route::get('/tasks', 'App\Http\Controllers\TasksController@list')->middleware(['auth:sanctum']);
-Route::post('/task', 'App\Http\Controllers\TasksController@create')->middleware(['auth:sanctum']);
-Route::put('/task', 'App\Http\Controllers\TasksController@update')->middleware(['auth:sanctum']);
-Route::delete('/task', 'App\Http\Controllers\TasksController@delete')->middleware(['auth:sanctum']);
+Route::withoutMiddleware(['auth:sanctum'])->group(function () {
+    Route::get('/tasks', 'App\Http\Controllers\TasksController@list');
+    Route::post('/task', 'App\Http\Controllers\TasksController@create');
+    Route::put('/task', 'App\Http\Controllers\TasksController@update');
+    Route::delete('/task', 'App\Http\Controllers\TasksController@delete');
+});
