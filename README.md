@@ -1,32 +1,30 @@
-Iniciando o Projeto Backend
+### Iniciando o Projeto Backend
 
--   cp .env.example .env
--   composer install
--   php artisan key:generate
--   php artisan migrate
--   php artisan db:seed
+-   `cp .env.example .env`
+-   `composer install`
+-   `php artisan key:generate`
+-   `php artisan migrate`
+-   `php artisan db:seed`
 
-Rodando o servidor
+### Rodando o servidor
 
--   php artisan serve
+-   `php artisan serve`
 
-Criando o token para um usuario
+### Headers dos endpoints
 
--   Acessar a rota: http://127.0.0.1:8000/tokens/create/5
+-   `Accept: application/json`
+-   `Content-Type: application/json`
+-   `Authorization: Bearer {token}`
 
-Headers dos endpoints
-
--   Accept: application/json
--   Content-Type: application/json
--   Authorization: Bearer {token}
-
-##Users
+## Users
 
 -   Listar
-    GET http://127.0.0.1:8000/api/users
+
+`GET` `http://127.0.0.1:8000/api/users`
 
 -   Gerar Token
-    POST http://127.0.0.1:8000/api/user/token
+
+`POST` `http://127.0.0.1:8000/api/user/token`
 
 ```
 {
@@ -34,13 +32,15 @@ Headers dos endpoints
 }
 ```
 
-##Tasks
+## Tasks
 
 -   Listar
-    GET http://127.0.0.1:8000/api/tasks
+
+`GET` `http://127.0.0.1:8000/api/tasks`
 
 -   Cadastrar
-    POST http://127.0.0.1:8000/api/task
+
+`POST` `http://127.0.0.1:8000/api/task`
 
 ```
 {
@@ -50,7 +50,8 @@ Headers dos endpoints
 ```
 
 -   Editar
-    PUT http://127.0.0.1:8000/api/task
+
+`PUT` `http://127.0.0.1:8000/api/task`
 
 ```
 {
@@ -61,7 +62,8 @@ Headers dos endpoints
 ```
 
 -   Deletar
-    DELETE http://127.0.0.1:8000/api/task
+
+`DELETE` `http://127.0.0.1:8000/api/task`
 
 ```
 {
