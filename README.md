@@ -28,9 +28,11 @@ Headers dos endpoints
 -   Gerar Token
     POST http://127.0.0.1:8000/api/user/token
 
+```
 {
 "id": 3
 }
+```
 
 ##Tasks
 
@@ -39,7 +41,6 @@ Headers dos endpoints
 
 -   Cadastrar
     POST http://127.0.0.1:8000/api/task
-    Body
 
 ```
 {
@@ -50,7 +51,6 @@ Headers dos endpoints
 
 -   Editar
     PUT http://127.0.0.1:8000/api/task
-    Body
 
 ```
 {
@@ -62,7 +62,6 @@ Headers dos endpoints
 
 -   Deletar
     DELETE http://127.0.0.1:8000/api/task
-    Body
 
 ```
 {
